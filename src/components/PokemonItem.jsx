@@ -11,7 +11,7 @@ export const PokemonItem = ({ pokemon, onClick }) => {
         onClick={() => onClick(pokemon)}
         onDoubleClick={() => console.log('double click')}
       >
-        <p className="p-2 text-center">{pokemon.name}</p>
+        <p className="p-2 text-center">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
       </div>
     </>
   );
