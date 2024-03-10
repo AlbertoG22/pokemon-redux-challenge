@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemons } from "../store/slices/thunks";
+import { ImageCard } from "../components/ImageCard";
+import '../styles/pages/HomePage.css';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -9,7 +11,7 @@ export const HomePage = () => {
     page,
     isLoading,
   } = useSelector((state) => state.pokemons);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
 
   useEffect(() => {
     dispatch(fetchPokemons());
@@ -30,12 +32,14 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row">
-        <div className="col-6">
-          <img src={image} alt="" />
+
+        <div className="col-md-6 d-flex flex-column justify-content-around images-container">
+          <ImageCard img={image} />
         </div>
-        <div className="col-6">
+
+        <div className="col-md-6">
           {pokemons.map((pokemon) => (
             <div
               key={pokemon.name}

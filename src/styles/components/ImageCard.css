@@ -1,0 +1,15 @@
+.logo-container {
+    height: 25%;
+}
+
+.pokemon-image {
+    height: 65%;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.logo-container img, .pokemon-image img {
+    object-fit: contain;
+    max-height: 90%;
+    width: 85%;
+}
