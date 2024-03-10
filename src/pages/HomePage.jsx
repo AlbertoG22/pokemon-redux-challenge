@@ -40,7 +40,7 @@ export const HomePage = () => {
         </div>
 
         <div className="col-md-6">
-          <div className="row" style={{ height: '93%' }}>
+          <div className="row" style={{ height: '93.5%' }}>
             {pokemons.map((pokemon) => (
               <div key={pokemon.name} className="col-md-6 col-xd-12">
                 <PokemonItem pokemon={pokemon} onClick={handleOnClick} />
