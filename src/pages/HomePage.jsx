@@ -19,17 +19,16 @@ export const HomePage = () => {
   }, []);
 
   const handleNextPokemons = (button) => {
-    const curPage = button === "next" ? page + 20 : page - 20;
-    // if(curPage < 20)
+    let curPage = button === "next" ? page + 20 : page - 20;
+
     dispatch(fetchPokemons(curPage));
-    console.log(page);
   };
 
   const handleOnClick = async (url) => {
     const res = await fetch(url);
     const img = await res.json();
+
     setImage(img.sprites.front_default);
-    // console.log(img.sprites.front_default);
   };
 
   return (
@@ -45,13 +44,6 @@ export const HomePage = () => {
             {pokemons.map((pokemon) => (
               <div key={pokemon.name} className="col-md-6 col-xd-12">
                 <PokemonItem pokemon={pokemon} onClick={handleOnClick} />
-                {/* <div
-                  key={pokemon.name}
-                  onClick={() => handleClick(pokemon.url)}
-                  style={{ cursor: "pointer" }}
-                >
-                  {pokemon.name}
-                </div> */}
               </div>
             ))}
           </div>
@@ -65,7 +57,7 @@ export const HomePage = () => {
               ← Back
             </button>
             <button
-              disabled={page === 140}
+              disabled={page > 140}
               className="btn btn-secondary"
               onClick={() => handleNextPokemons("next")}
             >
