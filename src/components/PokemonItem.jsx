@@ -6,7 +6,7 @@ export const PokemonItem = ({ pokemon, onClick, onDoubleClick }) => {
   return (
     <>
       <div
-        className={`pokemon-card ${selectedPokemon === pokemon.name ? 'selected' : ''}`}
+        className={`pokemon-card ${selectedPokemon.name === pokemon.name ? 'selected' : ''}`}
         style={{ cursor: "pointer" }}
         onClick={() => onClick(pokemon)}
         onDoubleClick={() => onDoubleClick(pokemon.name)}

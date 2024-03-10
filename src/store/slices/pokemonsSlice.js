@@ -6,7 +6,10 @@ export const pokemonsSlice = createSlice({
         page: 0,
         pokemons: [],
         isLoading: false,
-        selectedPokemon: '',
+        selectedPokemon: {
+            name: '',
+            data: {}
+        },
     },
     reducers: {
         startingPokemons: (state) => {

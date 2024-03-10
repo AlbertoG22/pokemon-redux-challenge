@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemons } from "../store/slices/thunks";
 import { ImageCard } from "../components/ImageCard";
-import '../styles/pages/HomePage.css';
+import "../styles/pages/HomePage.css";
 import { PokemonItem } from "../components/PokemonItem";
 import { setPokemonSelected } from "../store/slices/pokemonsSlice";
 import { useNavigate } from "react-router-dom";
@@ -10,12 +10,7 @@ import { useNavigate } from "react-router-dom";
 export const HomePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    pokemons = [],
-    page,
-    isLoading,
-  } = useSelector((state) => state.pokemons);
-  const [image, setImage] = useState('');
+  const { pokemons = [], page } = useSelector((state) => state.pokemons);
 
   useEffect(() => {
     dispatch(fetchPokemons());
@@ -29,10 +24,9 @@ export const HomePage = () => {
 
   const handleOnClick = async (pokemon) => {
     const res = await fetch(pokemon.url);
-    const img = await res.json();
-    
-    dispatch(setPokemonSelected(pokemon.name));
-    setImage(img.sprites.front_default);
+    const data = await res.json();
+
+    dispatch(setPokemonSelected({ name: pokemon.name, data }));
   };
 
   const handleDoubleClick = (name) => {
@@ -42,36 +36,39 @@ export const HomePage = () => {
   return (
     <div className="container mt-4">
       <div className="row">
-
         <div className="col-md-6 d-flex flex-column justify-content-around images-container">
-          <ImageCard img={image} />
+          <ImageCard />
         </div>
 
         <div className="col-md-6">
-          <div className="row" style={{ height: '93.5%' }}>
+          <div className="row" style={{ height: "93.5%" }}>
             {pokemons.map((pokemon) => (
               <div key={pokemon.name} className="col-md-6 col-xd-12">
-                <PokemonItem pokemon={pokemon} onClick={handleOnClick} onDoubleClick={handleDoubleClick} />
+                <PokemonItem
+                  pokemon={pokemon}
+                  onClick={handleOnClick}
+                  onDoubleClick={handleDoubleClick}
+                />
               </div>
             ))}
           </div>
 
-            <div className="d-flex justify-content-evenly">
-              <button
-                disabled={page === 20}
-                className="btn btn-secondary"
-                onClick={() => handleNextPokemons("back")}
-              >
-                ← Back
-              </button>
-              <button
-                disabled={page > 140}
-                className="btn btn-secondary"
-                onClick={() => handleNextPokemons("next")}
-              >
-                Next →
-              </button>
-            </div>
+          <div className="d-flex justify-content-evenly">
+            <button
+              disabled={page === 20}
+              className="btn btn-secondary"
+              onClick={() => handleNextPokemons("back")}
+            >
+              ← Back
+            </button>
+            <button
+              disabled={page > 140}
+              className="btn btn-secondary"
+              onClick={() => handleNextPokemons("next")}
+            >
+              Next →
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
 import pokeballImage from "../../assets/pokeball.jpg";
 import pokeLogo from '../../assets/poke_logo.webp';
 import '../styles/components/ImageCard.css';
+import { useSelector } from "react-redux";
 
-export const ImageCard = ({ img }) => {
+export const ImageCard = () => {
+  const { selectedPokemon } = useSelector(state => state.pokemons);
   
   return (
     <>
@@ -11,7 +13,7 @@ export const ImageCard = ({ img }) => {
       </div>
       <div className="pokemon-image d-flex justify-content-center align-items-center">
         <img
-          src={img === "" ? pokeballImage : img}
+          src={selectedPokemon.name === "" ? pokeballImage : selectedPokemon.data.sprites.front_default}
           // src={""}
           alt="Selected Pokemon"
         />
