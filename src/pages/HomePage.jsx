@@ -40,7 +40,7 @@ export const HomePage = () => {
         </div>
 
         <div className="col-md-6">
-          <div className="row">
+          <div className="row" style={{ height: '93%' }}>
             {pokemons.map((pokemon) => (
               <div key={pokemon.name} className="col-md-6 col-xd-12">
                 <PokemonItem pokemon={pokemon} onClick={handleOnClick} />
@@ -48,22 +48,22 @@ export const HomePage = () => {
             ))}
           </div>
 
-          <div className="d-flex justify-content-evenly">
-            <button
-              disabled={page === 20}
-              className="btn btn-secondary"
-              onClick={() => handleNextPokemons("back")}
-            >
-              ← Back
-            </button>
-            <button
-              disabled={page > 140}
-              className="btn btn-secondary"
-              onClick={() => handleNextPokemons("next")}
-            >
-              Next →
-            </button>
-          </div>
+            <div className="d-flex justify-content-evenly">
+              <button
+                disabled={page === 20}
+                className="btn btn-secondary"
+                onClick={() => handleNextPokemons("back")}
+              >
+                ← Back
+              </button>
+              <button
+                disabled={page > 140}
+                className="btn btn-secondary"
+                onClick={() => handleNextPokemons("next")}
+              >
+                Next →
+              </button>
+            </div>
         </div>
       </div>
     </div>
