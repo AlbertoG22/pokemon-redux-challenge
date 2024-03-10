@@ -5,9 +5,11 @@ import { ImageCard } from "../components/ImageCard";
 import '../styles/pages/HomePage.css';
 import { PokemonItem } from "../components/PokemonItem";
 import { setPokemonSelected } from "../store/slices/pokemonsSlice";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     pokemons = [],
     page,
@@ -33,6 +35,10 @@ export const HomePage = () => {
     setImage(img.sprites.front_default);
   };
 
+  const handleDoubleClick = (name) => {
+    navigate(`/details/${name}`);
+  };
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -45,7 +51,7 @@ export const HomePage = () => {
           <div className="row" style={{ height: '93.5%' }}>
             {pokemons.map((pokemon) => (
               <div key={pokemon.name} className="col-md-6 col-xd-12">
-                <PokemonItem pokemon={pokemon} onClick={handleOnClick} />
+                <PokemonItem pokemon={pokemon} onClick={handleOnClick} onDoubleClick={handleDoubleClick} />
               </div>
             ))}
           </div>
