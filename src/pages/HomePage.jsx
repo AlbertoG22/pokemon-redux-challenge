@@ -4,6 +4,7 @@ import { fetchPokemons } from "../store/slices/thunks";
 import { ImageCard } from "../components/ImageCard";
 import '../styles/pages/HomePage.css';
 import { PokemonItem } from "../components/PokemonItem";
+import { setPokemonSelected } from "../store/slices/pokemonsSlice";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -24,10 +25,11 @@ export const HomePage = () => {
     dispatch(fetchPokemons(curPage));
   };
 
-  const handleOnClick = async (url) => {
-    const res = await fetch(url);
+  const handleOnClick = async (pokemon) => {
+    const res = await fetch(pokemon.url);
     const img = await res.json();
-
+    
+    dispatch(setPokemonSelected(pokemon.name));
     setImage(img.sprites.front_default);
   };
 

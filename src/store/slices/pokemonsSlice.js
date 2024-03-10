@@ -6,6 +6,7 @@ export const pokemonsSlice = createSlice({
         page: 0,
         pokemons: [],
         isLoading: false,
+        selectedPokemon: '',
     },
     reducers: {
         startingPokemons: (state) => {
@@ -16,8 +17,11 @@ export const pokemonsSlice = createSlice({
             state.isLoading = false;
             state.page = action.payload.page;
         },
+        setPokemonSelected: (state, action) => {
+            state.selectedPokemon = action.payload;
+        },
     }
 });
 
 // Action creators are generated for each case reducer function
-export const { startingPokemons, setPokemons } = pokemonsSlice.actions;
+export const { startingPokemons, setPokemons, setPokemonSelected } = pokemonsSlice.actions;
