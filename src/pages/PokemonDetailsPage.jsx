@@ -2,6 +2,7 @@ import { ImageCard } from "../components/ImageCard";
 import { YellowField } from "../components/YellowField";
 import "../styles/pages/HomePage.css";
 import { useSelector } from "react-redux";
+import { capitalizeFirstLetter } from "../utils/format";
 
 export const PokemonDetailsPage = () => {
   const { selectedPokemon } = useSelector((state) => state.pokemons);
@@ -22,8 +23,8 @@ export const PokemonDetailsPage = () => {
             </h2>
 
             <div className="col-12">
-              <p>Height: {selectedPokemon.data.height}</p>
-              <p>Experience: {selectedPokemon.data.base_experience}</p>
+              <p className="details-text"><strong>Height:</strong> {selectedPokemon.data.height}cm</p>
+              <p className="details-text"><strong>Experience:</strong> {selectedPokemon.data.base_experience}</p>
               <hr />
             </div>
 
@@ -44,7 +45,7 @@ export const PokemonDetailsPage = () => {
             <div className="col-12">
               {selectedPokemon.data.stats.map((stat) => (
                 <div key={stat.stat.name} className="my-2">
-                  <strong>{stat.stat.name.toUpperCase()}:</strong>
+                  <strong>{capitalizeFirstLetter(stat.stat.name)}:</strong>
                   <div className="progress">
                     <div
                       className="progress-bar"

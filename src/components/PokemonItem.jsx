@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import '../styles/components/PokemonItem.css';
+import { capitalizeFirstLetter } from "../utils/format";
 
 export const PokemonItem = ({ pokemon, onClick, onDoubleClick }) => {
   const { selectedPokemon } = useSelector(state => state.pokemons);
@@ -11,7 +12,7 @@ export const PokemonItem = ({ pokemon, onClick, onDoubleClick }) => {
         onClick={() => onClick(pokemon)}
         onDoubleClick={() => onDoubleClick(pokemon.name)}
       >
-        <p className="p-2 text-center">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+        <p className="p-2 text-center">{capitalizeFirstLetter(pokemon.name)}</p>
       </div>
     </>
   );
