@@ -65,10 +65,10 @@ export const PokemonDetailsPage = () => {
             </div>
 
             <div className="col-12">
-              <p className="fw-bold mb-0">Stats</p>
+              <p className="fw-bold mb-0 mt-3">Stats</p>
               {selectedPokemon.data.stats.map((stat) => (
                 <div key={stat.stat.name} className="my-2">
-                  <p className="fw-bold mb-0">{capitalizeFirstLetter(stat.stat.name)}:</p>
+                  <p style={{ fontSize: '13px' }} className="fw-bold mb-0">{capitalizeFirstLetter(stat.stat.name)}:</p>
                   <div className="progress">
                     <div
                       className="progress-bar"

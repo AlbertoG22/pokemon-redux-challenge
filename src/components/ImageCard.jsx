@@ -13,7 +13,7 @@ export const ImageCard = () => {
       </div>
       <div className="pokemon-image d-flex justify-content-center align-items-center">
         <img
-          src={selectedPokemon.name === "" ? pokeballImage : selectedPokemon.data.sprites.front_default}
+          src={selectedPokemon.name === "" ? pokeballImage : selectedPokemon.data.sprites.other.dream_world.front_default}
           // src={""}
           alt="Selected Pokemon"
         />

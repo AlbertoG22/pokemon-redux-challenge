@@ -10,6 +10,6 @@
 
 .logo-container img, .pokemon-image img {
     object-fit: contain;
-    max-height: 90%;
+    max-height: 85%;
     width: 80%;
 }
