@@ -73,13 +73,9 @@ export const PokemonDetailsPage = () => {
                     <div
                       className="progress-bar"
                       role="progressbar"
-                      style={{ width: `${(stat.base_stat / 255) * 100}%` }}
+                      style={{ width: `${(stat.base_stat)}%` }}
                       aria-valuenow={stat.base_stat}
-                      aria-valuemin="0"
-                      aria-valuemax="255"
-                    >
-                      {/* {stat.base_stat} */}
-                    </div>
+                    />
                   </div>
                 </div>
               ))}
