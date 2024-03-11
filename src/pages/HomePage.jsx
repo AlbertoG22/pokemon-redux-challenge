@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemons } from "../store/slices/thunks";
 import { ImageCard } from "../components/ImageCard";
-import "../styles/pages/HomePage.css";
 import { PokemonItem } from "../components/PokemonItem";
 import { setPokemonSelected } from "../store/slices/pokemonsSlice";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../components/Button";
+import "../styles/pages/HomePage.css";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -54,20 +55,18 @@ export const HomePage = () => {
           </div>
 
           <div className="buttons-container d-flex justify-content-evenly">
-            <button
-              disabled={page === 0}
-              className="btn btn-secondary"
-              onClick={() => handleBackNextPokemons("back")}
-            >
-              ← Back
-            </button>
-            <button
-              disabled={page === 7}
-              className="btn btn-secondary"
-              onClick={() => handleBackNextPokemons("next")}
-            >
-              Next →
-            </button>
+            <Button
+              text="← Back"
+              action="back"
+              disabledButton={page === 0}
+              onClick={handleBackNextPokemons}
+            />
+            <Button
+              text="Next →"
+              action="next"
+              disabledButton={page === 7}
+              onClick={handleBackNextPokemons}
+            />
           </div>
         </div>
       </div>
