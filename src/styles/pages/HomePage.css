@@ -1,4 +1,13 @@
 .images-container {
     background-color: #e4350c;
     border-radius: 5px;
+    height: 94vh;
+}
+.buttons-container {
+    margin-top: 30px;
+}
+@media (min-width: 768px) {
+    .buttons-container {
+        margin-top: 0;
+    }
 }

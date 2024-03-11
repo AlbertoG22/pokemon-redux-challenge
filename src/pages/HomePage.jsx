@@ -53,7 +53,7 @@ export const HomePage = () => {
             ))}
           </div>
 
-          <div className="d-flex justify-content-evenly">
+          <div className="buttons-container d-flex justify-content-evenly">
             <button
               disabled={page === 20}
               className="btn btn-secondary"
