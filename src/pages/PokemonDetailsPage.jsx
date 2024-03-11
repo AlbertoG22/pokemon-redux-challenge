@@ -6,6 +6,7 @@ import { capitalizeFirstLetter } from "../utils/format";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { HeaderDetails } from "../components/HeaderDetails";
+import { GeneralDetails } from "../components/GeneralDetails";
 
 export const PokemonDetailsPage = () => {
   const { selectedPokemon } = useSelector((state) => state.pokemons);
@@ -26,34 +27,14 @@ export const PokemonDetailsPage = () => {
             <HeaderDetails name={selectedPokemon.name} onClick={navigate} />
 
             <div className="col-12">
-              <div className="row">
-                <div className="col-6">
-                  <p className="details-text">
-                    <strong>Height:</strong> {selectedPokemon.data.height}0cm
-                  </p>
-                </div>
-                <div className="col-6 d-flex justify-content-end">
-                  <p className="details-text">
-                    <strong>No.</strong> {selectedPokemon.data.id}
-                  </p>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-6">
-                  <p className="details-text">
-                    <strong>Experience:</strong>{" "}
-                    {selectedPokemon.data.base_experience}
-                  </p>
-                </div>
-                <div className="col-6 d-flex justify-content-end">
-                  <p className="details-text col*6">
-                    <strong>Weight:</strong> {selectedPokemon.data.weight / 10}
-                    kg
-                  </p>
-                </div>
-              </div>
+              <GeneralDetails
+                id={selectedPokemon.data.id}
+                height={selectedPokemon.data.height}
+                weight={selectedPokemon.data.weight / 10}
+                baseExperience={selectedPokemon.data.base_experience}
+              />
             </div>
+
             <hr
               style={{
                 backgroundColor: "#c7a10a",
