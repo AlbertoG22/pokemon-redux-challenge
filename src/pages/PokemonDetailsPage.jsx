@@ -1,13 +1,11 @@
 import { ImageCard } from "../components/ImageCard";
-import { YellowField } from "../components/YellowField";
-import "../styles/pages/HomePage.css";
 import { useSelector } from "react-redux";
-import { capitalizeFirstLetter } from "../utils/format";
-import { FaChevronCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { HeaderDetails } from "../components/HeaderDetails";
 import { GeneralDetails } from "../components/GeneralDetails";
 import { DetailTags } from "../components/DetailTags";
+import { Stats } from "../components/Stats";
+import "../styles/pages/HomePage.css";
 
 export const PokemonDetailsPage = () => {
   const { selectedPokemon } = useSelector((state) => state.pokemons);
@@ -61,22 +59,7 @@ export const PokemonDetailsPage = () => {
             </div>
 
             <div className="col-12">
-              <p className="fw-bold mb-0 mt-3">Stats</p>
-              {selectedPokemon.data.stats.map((stat) => (
-                <div key={stat.stat.name} className="my-2">
-                  <p style={{ fontSize: "13px" }} className="fw-bold mb-0">
-                    {capitalizeFirstLetter(stat.stat.name)}:
-                  </p>
-                  <div className="progress">
-                    <div
-                      className="progress-bar"
-                      role="progressbar"
-                      style={{ width: `${stat.base_stat}%` }}
-                      aria-valuenow={stat.base_stat}
-                    />
-                  </div>
-                </div>
-              ))}
+              <Stats data={selectedPokemon.data.stats} />
             </div>
           </div>
         </div>

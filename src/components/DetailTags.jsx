@@ -1,4 +1,3 @@
-import React from "react";
 import { YellowField } from "./YellowField";
 
 export const DetailTags = ({ text, data, propName }) => {

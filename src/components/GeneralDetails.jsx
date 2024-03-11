@@ -1,4 +1,3 @@
-import React from "react";
 
 export const GeneralDetails = ({ id, height, weight, baseExperience }) => {
   return (
