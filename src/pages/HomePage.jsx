@@ -16,8 +16,8 @@ export const HomePage = () => {
     dispatch(fetchPokemons());
   }, []);
 
-  const handleNextPokemons = (button) => {
-    let curPage = button === "next" ? page + 20 : page - 20;
+  const handleBackNextPokemons = (button) => {
+    let curPage = button === "next" ? page + 1 : page - 1;
 
     dispatch(fetchPokemons(curPage));
   };
@@ -41,7 +41,7 @@ export const HomePage = () => {
         </div>
 
         <div className="col-md-6">
-          <div className="row" style={{ height: "93.5%" }}>
+          <div className="row px-md-3 mt-4 mt-md-0" style={{ height: "93.5%" }}>
             {pokemons.map((pokemon) => (
               <div key={pokemon.name} className="col-md-6 col-xd-12">
                 <PokemonItem
@@ -55,16 +55,16 @@ export const HomePage = () => {
 
           <div className="buttons-container d-flex justify-content-evenly">
             <button
-              disabled={page === 20}
+              disabled={page === 0}
               className="btn btn-secondary"
-              onClick={() => handleNextPokemons("back")}
+              onClick={() => handleBackNextPokemons("back")}
             >
               ← Back
             </button>
             <button
-              disabled={page > 140}
+              disabled={page === 7}
               className="btn btn-secondary"
-              onClick={() => handleNextPokemons("next")}
+              onClick={() => handleBackNextPokemons("next")}
             >
               Next →
             </button>
