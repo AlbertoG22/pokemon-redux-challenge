@@ -18,10 +18,13 @@ export const PokemonDetailsPage = () => {
         </div>
 
         <div className="col-md-6">
-          <div className="row px-md-3 mt-4 mb-5 mt-md-0" style={{ height: "93.5%" }}>
+          <div
+            className="row px-md-3 mt-4 mb-5 mt-md-0"
+            style={{ height: "93.5%" }}
+          >
             <div className="col-12 d-flex align-items-center justify-content-center mb-3">
               <FaChevronCircleLeft
-                className='back-icon'
+                className="back-icon"
                 size={30}
                 color="#bdbdbd"
                 onClick={() => navigate(-1)}
@@ -32,21 +35,51 @@ export const PokemonDetailsPage = () => {
             </div>
 
             <div className="col-12">
-              <p className="details-text">
-                <strong>Height:</strong> {selectedPokemon.data.height}0cm
-              </p>
-              <p className="details-text">
-                <strong>Experience:</strong>{" "}
-                {selectedPokemon.data.base_experience}
-              </p>
-              <hr style={{ backgroundColor: '#c7a10a', height: '2px' }} />
+              <div className="row">
+                <div className="col-6">
+                  <p className="details-text">
+                    <strong>Height:</strong> {selectedPokemon.data.height}0cm
+                  </p>
+                </div>
+                <div className="col-6 d-flex justify-content-end">
+                  <p className="details-text">
+                    <strong>No.</strong> {selectedPokemon.data.id}
+                  </p>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-6">
+                  <p className="details-text">
+                    <strong>Experience:</strong>{" "}
+                    {selectedPokemon.data.base_experience}
+                  </p>
+                </div>
+                <div className="col-6 d-flex justify-content-end">
+                  <p className="details-text col*6">
+                    <strong>Weight:</strong> {selectedPokemon.data.weight / 10}
+                    kg
+                  </p>
+                </div>
+              </div>
             </div>
+            <hr
+              style={{
+                backgroundColor: "#c7a10a",
+                height: "2px",
+                marginTop: "0",
+              }}
+            />
 
             <div className="col-12">
               <p className="fw-bold mb-1">Type</p>
               <div className="d-flex gap-2">
                 {selectedPokemon.data.types.map((type, _, arr) => (
-                  <YellowField key={type.type.name} text={type.type.name} colNum={arr.length}/>
+                  <YellowField
+                    key={type.type.name}
+                    text={type.type.name}
+                    colNum={arr.length}
+                  />
                 ))}
               </div>
             </div>
@@ -68,12 +101,14 @@ export const PokemonDetailsPage = () => {
               <p className="fw-bold mb-0 mt-3">Stats</p>
               {selectedPokemon.data.stats.map((stat) => (
                 <div key={stat.stat.name} className="my-2">
-                  <p style={{ fontSize: '13px' }} className="fw-bold mb-0">{capitalizeFirstLetter(stat.stat.name)}:</p>
+                  <p style={{ fontSize: "13px" }} className="fw-bold mb-0">
+                    {capitalizeFirstLetter(stat.stat.name)}:
+                  </p>
                   <div className="progress">
                     <div
                       className="progress-bar"
                       role="progressbar"
-                      style={{ width: `${(stat.base_stat)}%` }}
+                      style={{ width: `${stat.base_stat}%` }}
                       aria-valuenow={stat.base_stat}
                     />
                   </div>
