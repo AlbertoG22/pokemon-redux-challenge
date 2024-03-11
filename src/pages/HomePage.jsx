@@ -14,7 +14,7 @@ export const HomePage = () => {
   const { pokemons = [], page } = useSelector((state) => state.pokemons);
 
   useEffect(() => {
-    dispatch(fetchPokemons());
+    if (pokemons.length === 0) dispatch(fetchPokemons());
   }, []);
 
   const handleBackNextPokemons = (button) => {
