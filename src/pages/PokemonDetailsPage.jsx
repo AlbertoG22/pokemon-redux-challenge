@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "../utils/format";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { HeaderDetails } from "../components/HeaderDetails";
 
 export const PokemonDetailsPage = () => {
   const { selectedPokemon } = useSelector((state) => state.pokemons);
@@ -22,17 +23,7 @@ export const PokemonDetailsPage = () => {
             className="row px-md-3 mt-4 mb-5 mt-md-0"
             style={{ height: "93.5%" }}
           >
-            <div className="col-12 d-flex align-items-center justify-content-center mb-3">
-              <FaChevronCircleLeft
-                className="back-icon"
-                size={30}
-                color="#bdbdbd"
-                onClick={() => navigate(-1)}
-              />
-              <h2 className="text-center">
-                {selectedPokemon.name.toUpperCase()}
-              </h2>
-            </div>
+            <HeaderDetails name={selectedPokemon.name} onClick={navigate} />
 
             <div className="col-12">
               <div className="row">
