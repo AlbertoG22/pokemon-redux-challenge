@@ -6,7 +6,7 @@ export const YellowField = ({ text }) => {
 
   return (
     <div className={`field-content text-center`}>
-        { capitalizeFirstLetter(text) }
+      { capitalizeFirstLetter(text) }
     </div>
   );
 };
