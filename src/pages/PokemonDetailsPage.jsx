@@ -7,6 +7,7 @@ import { FaChevronCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { HeaderDetails } from "../components/HeaderDetails";
 import { GeneralDetails } from "../components/GeneralDetails";
+import { DetailTags } from "../components/DetailTags";
 
 export const PokemonDetailsPage = () => {
   const { selectedPokemon } = useSelector((state) => state.pokemons);
@@ -44,29 +45,19 @@ export const PokemonDetailsPage = () => {
             />
 
             <div className="col-12">
-              <p className="fw-bold mb-1">Type</p>
-              <div className="d-flex gap-2">
-                {selectedPokemon.data.types.map((type, _, arr) => (
-                  <YellowField
-                    key={type.type.name}
-                    text={type.type.name}
-                    colNum={arr.length}
-                  />
-                ))}
-              </div>
+              <DetailTags
+                text="Type"
+                data={selectedPokemon.data.types}
+                propName="type"
+              />
             </div>
 
             <div className="col-12">
-              <p className="fw-bold mb-1">Abilities</p>
-              <div className="d-flex gap-2">
-                {selectedPokemon.data.abilities.map((ability, _, arr) => (
-                  <YellowField
-                    key={ability.ability.name}
-                    text={ability.ability.name}
-                    colNum={arr.length}
-                  />
-                ))}
-              </div>
+              <DetailTags
+                text="Abilities"
+                data={selectedPokemon.data.abilities}
+                propName="ability"
+              />
             </div>
 
             <div className="col-12">
