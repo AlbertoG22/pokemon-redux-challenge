@@ -33,7 +33,7 @@ export const PokemonDetailsPage = () => {
 
             <div className="col-12">
               <p className="details-text">
-                <strong>Height:</strong> {selectedPokemon.data.height}cm
+                <strong>Height:</strong> {selectedPokemon.data.height}0cm
               </p>
               <p className="details-text">
                 <strong>Experience:</strong>{" "}
@@ -44,25 +44,31 @@ export const PokemonDetailsPage = () => {
 
             <div className="col-12">
               <p className="fw-bold mb-1">Type</p>
-              {selectedPokemon.data.types.map((type) => (
-                <YellowField key={type.type.name} text={type.type.name} />
-              ))}
+              <div className="d-flex gap-2">
+                {selectedPokemon.data.types.map((type, _, arr) => (
+                  <YellowField key={type.type.name} text={type.type.name} colNum={arr.length}/>
+                ))}
+              </div>
             </div>
 
             <div className="col-12">
               <p className="fw-bold mb-1">Abilities</p>
-              {selectedPokemon.data.abilities.map((ability) => (
-                <YellowField
-                  key={ability.ability.name}
-                  text={ability.ability.name}
-                />
-              ))}
+              <div className="d-flex gap-2">
+                {selectedPokemon.data.abilities.map((ability, _, arr) => (
+                  <YellowField
+                    key={ability.ability.name}
+                    text={ability.ability.name}
+                    colNum={arr.length}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="col-12">
+              <p className="fw-bold mb-0">Stats</p>
               {selectedPokemon.data.stats.map((stat) => (
                 <div key={stat.stat.name} className="my-2">
-                  <strong>{capitalizeFirstLetter(stat.stat.name)}:</strong>
+                  <p className="fw-bold mb-0">{capitalizeFirstLetter(stat.stat.name)}:</p>
                   <div className="progress">
                     <div
                       className="progress-bar"
