@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ProgressBar } from "./ProgressBar";
+import { ProgressBar } from "./";
 
 export const Stats = ({ data }) => {
   return (

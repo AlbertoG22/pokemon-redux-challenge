@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { GeneralDetail } from "./GeneralDetail";
+import { GeneralDetail } from "./";
 
 export const GeneralDetails = ({ id, height, weight, baseExperience }) => {
   return (

@@ -1,10 +1,6 @@
-import { ImageCard } from "../components/ImageCard";
+import { ImageCard, HeaderDetails, GeneralDetails, DetailTags, Stats } from "../components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { HeaderDetails } from "../components/HeaderDetails";
-import { GeneralDetails } from "../components/GeneralDetails";
-import { DetailTags } from "../components/DetailTags";
-import { Stats } from "../components/Stats";
 import { ErrorPage } from "./ErrorPage";
 import "../styles/pages/GeneralPage.css";
 

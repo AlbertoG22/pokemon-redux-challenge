@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemons } from "../store/slices/thunks";
-import { ImageCard } from "../components/ImageCard";
-import { PokemonItem } from "../components/PokemonItem";
-import { Button } from "../components/Button";
+import { ImageCard, PokemonItem, Button } from "../components";
 import { ErrorPage } from "./ErrorPage";
 import {
   setPokemonSelected,

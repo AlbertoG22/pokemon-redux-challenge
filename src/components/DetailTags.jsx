@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { DetailField } from "./DetailField";
+import { DetailField } from "./";
 
 export const DetailTags = ({ text, data, propName }) => {
   const colNum = data.length;
