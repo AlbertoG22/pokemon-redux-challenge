@@ -21,7 +21,7 @@ export const PokemonItem = ({ pokemon, onClick, onDoubleClick }) => {
       ) : (
         <div
           className={`pokemon-card ${selectedPokemon.name === pokemon.name ? 'selected' : ''}`}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", userSelect: 'none' }}
           onClick={handleClick}
           onDoubleClick={handleDoubleClick}
         >
