@@ -33,14 +33,7 @@ export const PokemonDetailsPage = () => {
                 baseExperience={selectedPokemon.data.base_experience}
               />
             </div>
-
-            <hr
-              style={{
-                backgroundColor: "#c7a10a",
-                height: "2px",
-                marginTop: "0",
-              }}
-            />
+            <hr />
 
             <div className="col-12">
               <DetailTags

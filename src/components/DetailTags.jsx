@@ -1,4 +1,4 @@
-import { YellowField } from "./YellowField";
+import { DetailField } from "./DetailField";
 
 export const DetailTags = ({ text, data, propName }) => {
   return (
@@ -6,7 +6,7 @@ export const DetailTags = ({ text, data, propName }) => {
       <p className="fw-bold mb-1">{text}</p>
       <div className="d-flex gap-2">
         {data.map((item, _, arr) => (
-          <YellowField
+          <DetailField
             key={item[propName].name}
             text={item[propName].name}
             colNum={arr.length}
