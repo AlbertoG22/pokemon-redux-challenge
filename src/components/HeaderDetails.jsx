@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { FaChevronCircleLeft } from "react-icons/fa";
+import { capitalizeAllWord } from "../utils/format";
 
 export const HeaderDetails = ({ name, onClick }) => {
   const handleBackClick = () => onClick(-1);
@@ -13,7 +14,7 @@ export const HeaderDetails = ({ name, onClick }) => {
         aria-label="go back"
         onClick={handleBackClick}
       />
-      <h2 className="text-center">{name.toUpperCase()}</h2>
+      <h2 className="text-center">{capitalizeAllWord(name)}</h2>
     </div>
   );
 };
