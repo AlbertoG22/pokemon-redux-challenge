@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { ProgressBar } from "./ProgressBar";
 
 export const Stats = ({ data }) => {
@@ -13,4 +14,13 @@ export const Stats = ({ data }) => {
       ))}
     </>
   );
+};
+
+Stats.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    stat: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
+    base_stat: PropTypes.number.isRequired,
+  })).isRequired,
 };

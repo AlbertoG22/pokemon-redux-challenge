@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { capitalizeFirstLetter } from "../utils/format";
 
 export const ProgressBar = ({ statName, baseStat }) => {
@@ -12,8 +13,15 @@ export const ProgressBar = ({ statName, baseStat }) => {
           role="progressbar"
           style={{ width: `${baseStat}%` }}
           aria-valuenow={baseStat}
+          aria-valuemin="0"
+          aria-valuemax="100"
         />
       </div>
     </div>
   );
+};
+
+ProgressBar.propTypes = {
+  statName: PropTypes.string.isRequired,
+  baseStat: PropTypes.number.isRequired,
 };
