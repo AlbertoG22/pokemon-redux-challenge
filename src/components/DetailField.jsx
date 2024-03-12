@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import { capitalizeFirstLetter } from "../utils/format";
 import { pokemonTypeColors } from "../utils/pokemonTypeColors";
 import "../styles/components/DetailField.css";
@@ -16,4 +17,9 @@ export const DetailField = ({ text, colNum }) => {
       {capitalizeFirstLetter(text)}
     </div>
   );
+};
+
+DetailField.propTypes = {
+  text: PropTypes.string.isRequired,
+  colNum: PropTypes.number,
 };
