@@ -5,7 +5,7 @@ import { HeaderDetails } from "../components/HeaderDetails";
 import { GeneralDetails } from "../components/GeneralDetails";
 import { DetailTags } from "../components/DetailTags";
 import { Stats } from "../components/Stats";
-import "../styles/pages/HomePage.css";
+import "../styles/pages/GeneralPage.css";
 
 export const PokemonDetailsPage = () => {
   const { selectedPokemon } = useSelector((state) => state.pokemons);

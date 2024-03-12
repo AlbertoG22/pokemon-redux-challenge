@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemons } from "../store/slices/thunks";
 import { ImageCard } from "../components/ImageCard";
 import { PokemonItem } from "../components/PokemonItem";
 import { setPokemonSelected } from "../store/slices/pokemonsSlice";
-import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
-import "../styles/pages/HomePage.css";
+import "../styles/pages/GeneralPage.css";
+
+const TOTAL_PAGES = 7;
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -18,16 +20,20 @@ export const HomePage = () => {
   }, []);
 
   const handleBackNextPokemons = (button) => {
-    let curPage = button === "next" ? page + 1 : page - 1;
+    const curPage = button === "next" ? page + 1 : page - 1;
 
     dispatch(fetchPokemons(curPage));
   };
 
   const handleOnClick = async (pokemon) => {
-    const res = await fetch(pokemon.url);
-    const data = await res.json();
-
-    dispatch(setPokemonSelected({ name: pokemon.name, data }));
+    try {
+      const res = await fetch(pokemon.url);
+      const data = await res.json();
+  
+      dispatch(setPokemonSelected({ name: pokemon.name, data }));
+    } catch(err) {
+      console.error("Failed to fetch Pokemon", error);
+    }
   };
 
   const handleDoubleClick = (name) => {
@@ -64,7 +70,7 @@ export const HomePage = () => {
             <Button
               text="Next →"
               action="next"
-              disabledButton={page === 7}
+              disabledButton={page === TOTAL_PAGES}
               onClick={handleBackNextPokemons}
             />
           </div>
