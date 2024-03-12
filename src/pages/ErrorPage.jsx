@@ -23,6 +23,6 @@ export const ErrorPage = ({ errorMsg, largeMsg }) => {
 };
 
 ErrorPage.propTypes = {
-    errorMsg: PropTypes.string.isRequired,
-    largeMsg: PropTypes.string,
+  errorMsg: PropTypes.string.isRequired,
+  largeMsg: PropTypes.string,
 };

@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemons } from "../store/slices/thunks";
 import { ImageCard } from "../components/ImageCard";
 import { PokemonItem } from "../components/PokemonItem";
-import { setPokemonSelected } from "../store/slices/pokemonsSlice";
 import { Button } from "../components/Button";
-import "../styles/pages/GeneralPage.css";
 import { ErrorPage } from "./ErrorPage";
+import {
+  setPokemonSelected,
+  setPokemonSelectedError,
+  startingPokemons,
+} from "../store/slices/pokemonsSlice";
+import "../styles/pages/GeneralPage.css";
 
 const TOTAL_PAGES = 7;
 
@@ -17,9 +21,9 @@ export const HomePage = () => {
   const { pokemons = [], page, error } = useSelector((state) => state.pokemons);
 
   useEffect(() => {
-    if (pokemons.length === 0 && !error){
+    if (pokemons.length === 0 && !error) {
       dispatch(fetchPokemons());
-    } 
+    }
   }, []);
 
   const handleBackNextPokemons = (button) => {
@@ -29,18 +33,19 @@ export const HomePage = () => {
   };
 
   const handleOnClick = async (pokemon) => {
+    dispatch(startingPokemons());
     try {
       const res = await fetch(pokemon.url);
       const data = await res.json();
 
       dispatch(setPokemonSelected({ name: pokemon.name, data }));
     } catch (err) {
-      console.error("Failed to fetch Pokemon", error);
+      dispatch(setPokemonSelectedError(err.message));
     }
   };
 
   const handleDoubleClick = (name) => {
-    navigate(`/details/${name}`);
+    if (!error) navigate(`/details/${name}`);
   };
 
   return (
